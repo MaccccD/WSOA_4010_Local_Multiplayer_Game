@@ -8,7 +8,14 @@ public class Movement : MonoBehaviour
 
     private InputAction moveAction;
     private Vector2 moveInput;
+    public Ducking duckingMechanic;
 
+
+    private void Start()
+    {
+        duckingMechanic = GetComponent<Ducking>();
+        Debug.Log(duckingMechanic + "script has been foundddd");
+    }
     private void OnEnable()
     {
         // Find the action map and move action
@@ -49,6 +56,9 @@ public class Movement : MonoBehaviour
         // Apply movement based on input
         Vector2 movement = new Vector2(moveInput.x, 0) * moveSpeed * Time.deltaTime;
         transform.Translate(movement);
+        // this is where im referencing the ducking mechanic :
+        duckingMechanic.Duck();
+        
     }
 
 }
