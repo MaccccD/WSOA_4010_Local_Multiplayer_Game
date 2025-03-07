@@ -29,17 +29,19 @@ public class Ducking : MonoBehaviour
     {
         if (isDucking)
         {
+            float currentHeightDifference = playerScale.y - duckScale.y; // so instead of subtracting the duck height from the y value of the player cuasing it to drop or sink into the ground, im now getting the difference between the two scales(4-2)
             transform.localScale = duckScale;
-            transform.position = new Vector3(transform.position.x, transform.position.y - duckHeight, transform.position.z); // the value of this cna be adjudtes based on the actula heght of the duck and how lpw the player can go 
+            transform.position -= new Vector3(0, currentHeightDifference, 0); // the value of this can be adjusted based on the actual height of the player while the bottom reemains fixed
             canDuck = false;
             
             
         }
 
-        else if (!isDucking)
+        else
         {
+            float heightDifference = duckScale.y - playerScale.y; // vise versa of the above
             transform.localScale = playerScale;
-            transform.position = new Vector3(transform.position.x, transform.position.y + duckHeight, transform.position.z);
+            transform.position -= new Vector3(0, heightDifference , 0);
             canDuck = true;
         }
 
