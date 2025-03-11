@@ -9,12 +9,14 @@ public class Movement : MonoBehaviour
     private InputAction moveAction;
     private Vector2 moveInput;
     public Ducking duckingMechanic;
+    public Jump jumpingMechanic;
 
 
     private void Start()
     {
         duckingMechanic = GetComponent<Ducking>();
-        Debug.Log(duckingMechanic + "script has been foundddd");
+        jumpingMechanic = GetComponent<Jump>();
+       Debug.Log(jumpingMechanic + "script has been foundddd");
     }
     private void OnEnable()
     {
@@ -56,8 +58,9 @@ public class Movement : MonoBehaviour
         // Apply movement based on input
         Vector2 movement = new Vector2(moveInput.x, 0) * moveSpeed * Time.deltaTime;
         transform.Translate(movement);
-        // this is where im referencing the ducking mechanic :
+        // this is where im referencing the ducking mechanic as well as the jumping mechanic :
         duckingMechanic.Duck();
+        jumpingMechanic.JumpMech();
         
     }
 
