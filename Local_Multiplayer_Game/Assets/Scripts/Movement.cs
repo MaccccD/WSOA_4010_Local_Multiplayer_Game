@@ -60,6 +60,7 @@ public class Movement : MonoBehaviour
         transform.Translate(movement);
         // this is where im referencing the ducking mechanic as well as the jumping mechanic :
         duckingMechanic.Duck();
+        jumpingMechanic.CheckGroundStatus();
         jumpingMechanic.JumpMech();
         
     }
