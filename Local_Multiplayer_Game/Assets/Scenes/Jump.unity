@@ -119,6 +119,71 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &29792036
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.9870014
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7916852
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.012492657
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622356553183694201, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089792936270177829, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089792936270177829, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673269774294583075, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
+      propertyPath: m_Name
+      value: 'Blood Particle Effect '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
 --- !u!1 &522651439
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +846,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!1 &1712651455
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,3 +977,4 @@ SceneRoots:
   - {fileID: 736367859}
   - {fileID: 1128691215}
   - {fileID: 522651441}
+  - {fileID: 29792036}
