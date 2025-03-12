@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Ducking : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Ducking : MonoBehaviour
     private Transform firstChild; //Eden: made a top half of the player that can be deactivated to look like a duck
     private bool isDucking = false;
     private float duckTimer = 0f;
+
+   // public InputActionReference duckAction; // New Input System
+
 
     private void Start()
     {
@@ -24,17 +28,17 @@ public class Ducking : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
         //Eden: if c is pressed or held down, start or reset the duck timer
-        if (Input.GetKey(KeyCode.C) && canDuck)
+       if (Input.GetKey(canDuck)
         {
             if (!isDucking)
             {
                 StartDucking();
             }
         }
-    }
+    }*/
 
     /*public void Duck()
     {
@@ -47,23 +51,28 @@ public class Ducking : MonoBehaviour
             }
         }
     }*/
-    private void StartDucking()
+
+
+    public void StartDucking()
     {
-        isDucking = true;
-        canDuck = false; 
-        duckingSound.Play();
-
-        //Eden: here I deactivate the first child
-        if (firstChild != null)
+        if(canDuck && !isDucking)
         {
-            firstChild.gameObject.SetActive(false);
+            isDucking = true;
+            canDuck = false;
+            duckingSound.Play();
+
+            //Eden: here I deactivate the first child
+            if (firstChild != null)
+            {
+                firstChild.gameObject.SetActive(false);
+            }
+
+            //Eden: start the timer for chosen duration
+            duckTimer = duckDuration;
+            Invoke("StopDucking", duckDuration); //Eden: automatically StopDucking after the duration
         }
-
-        //Eden: start the timer for chosen duration
-        duckTimer = duckDuration;
-        Invoke("StopDucking", duckDuration); //Eden: automatically StopDucking after the duration
     }
-
+       
     private void StopDucking()
     {
         //Eden: now I eactivate the first child after duration to make the ducking stop
@@ -76,4 +85,5 @@ public class Ducking : MonoBehaviour
         canDuck = true;
         isDucking = false;
     }
+
 }

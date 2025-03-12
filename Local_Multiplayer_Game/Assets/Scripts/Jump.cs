@@ -7,6 +7,7 @@ public class Jump : MonoBehaviour
     public float currentmoveSpeed;
     public AudioSource jumpingSound;
     [SerializeField] private bool canJump = false;
+
     [Header("Jumping Physics")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float groundCheckDistance = 2.1f;
@@ -21,14 +22,14 @@ public class Jump : MonoBehaviour
       
     }
 
-    private void Update()
+    /*private void Update()
     {
         CheckGroundStatus();
-        JumpMech();
-    }
+        //JumpMech();
+    }*/
     public void JumpMech()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (canJump)
         {
             currentmoveSpeed = 0f;
             //rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);//Dumi: so adding the jump force to the player so it goes upwards by using the rigid bodies addforce
