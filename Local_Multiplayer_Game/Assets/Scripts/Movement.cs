@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
         Vector2 movement = new Vector2(moveInput.x, 0) * moveSpeed * Time.deltaTime;
         transform.Translate(movement);
         // this is where im referencing the ducking mechanic as well as the jumping mechanic :
-        duckingMechanic.Duck();
+        //duckingMechanic.Duck(); //Eden: i have commented this out still trying to understand why we need this
         jumpingMechanic.CheckGroundStatus();
         jumpingMechanic.JumpMech();
         

@@ -1,50 +1,79 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 public class Ducking : MonoBehaviour
 {
     [Header("Ducking Mechanic Variables")]
-    public float currentSpeed;
     [SerializeField] private bool canDuck = true;
-    [SerializeField] private Vector3 duckScale = new Vector3(1f, 2f, 1f); // player duck dimensions
-    [SerializeField] private Vector3 playerScale = new Vector3(1f, 4f, 1f); // player original dimensions with the height of 4 and the width of 1
-    public AudioSource duckingSound;
+    [SerializeField] private float duckDuration = 0.4f; //Eden: duration of the duck in seconds
+    [SerializeField] private AudioSource duckingSound;
 
-    public void Duck()
+    private Transform firstChild; //Eden: made a top half of the player that can be deactivated to look like a duck
+    private bool isDucking = false;
+    private float duckTimer = 0f;
+
+    private void Start()
     {
-        if (Input.GetKey(KeyCode.C) && canDuck)
+        //Eden: get the first child of the player so that it can be deactivated
+        if (transform.childCount > 0)
         {
-            currentSpeed = 0.5f; 
-            DuckingManagement(true); // so allow ducking here
-            duckingSound.Play();
-
+            firstChild = transform.GetChild(0); 
         }
-        else if (!Input.GetKey(KeyCode.C) && !canDuck) // dont allow ducking
-        {
-            DuckingManagement(false);
-            // dont play the sound 
-        }
-    }
-    private void DuckingManagement(bool isDucking)
-    {
-        if (isDucking)
-        {
-            float currentHeightDifference = playerScale.y - duckScale.y; // so instead of subtracting the duck height from the y value of the player cuasing it to drop or sink into the ground, im now getting the difference between the two scales(4-2)
-            transform.localScale = duckScale;
-            transform.position -= new Vector3(0, currentHeightDifference, 0); // the value of this can be adjusted based on the actual height of the player while the bottom reemains fixed
-            canDuck = false;
-            
-            
-        }
-
         else
         {
-            float heightDifference = duckScale.y - playerScale.y; // vise versa of the above
-            transform.localScale = playerScale;
-            transform.position -= new Vector3(0, heightDifference , 0);
-            canDuck = true;
+            Debug.LogError("No children found for the player");
         }
-
     }
 
+    private void Update()
+    {
+        //Eden: if c is pressed or held down, start or reset the duck timer
+        if (Input.GetKey(KeyCode.C) && canDuck)
+        {
+            if (!isDucking)
+            {
+                StartDucking();
+            }
+        }
+    }
 
+    /*public void Duck()
+    {
+        //handle ducking logic
+        if (Input.GetKey(KeyCode.C) && canDuck)
+        {
+            if (!isDucking)
+            {
+                StartDucking();
+            }
+        }
+    }*/
+    private void StartDucking()
+    {
+        isDucking = true;
+        canDuck = false; 
+        duckingSound.Play();
+
+        //Eden: here I deactivate the first child
+        if (firstChild != null)
+        {
+            firstChild.gameObject.SetActive(false);
+        }
+
+        //Eden: start the timer for chosen duration
+        duckTimer = duckDuration;
+        Invoke("StopDucking", duckDuration); //Eden: automatically StopDucking after the duration
+    }
+
+    private void StopDucking()
+    {
+        //Eden: now I eactivate the first child after duration to make the ducking stop
+        if (firstChild != null)
+        {
+            firstChild.gameObject.SetActive(true);
+        }
+
+        //Eden: now allow ducking again after the duration
+        canDuck = true;
+        isDucking = false;
+    }
 }
