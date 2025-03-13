@@ -126,8 +126,9 @@ GameObject:
   - component: {fileID: 6902537256478322134}
   - component: {fileID: 1864476809283883323}
   - component: {fileID: 5094102394005698292}
+  - component: {fileID: 5230773316456430633}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player One
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,6 +418,100 @@ MonoBehaviour:
   duckingMechanic: {fileID: 6567937099806884095}
   jumpingMechanic: {fileID: 6571003641897850254}
   attackMechanic: {fileID: 1864476809283883323}
+--- !u!114 &5230773316456430633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271403490816220231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: da809fbe484792b4bbe75f8bb48397f6, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5094102394005698292}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 78ca2a41-6a98-4ad0-9e80-994a595c20cd
+    m_ActionName: 'Player_1/Move[/DualSenseGamepadHID/leftStick]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5094102394005698292}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f3aa5ec9-6419-4e02-86db-ef98e017508a
+    m_ActionName: 'Player_1/Jump[/DualSenseGamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5094102394005698292}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnDuck
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f140df64-b0b5-45b0-93f9-665237a676c0
+    m_ActionName: 'Player_1/Duck[/DualSenseGamepadHID/rightTrigger]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5094102394005698292}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 63ebf42c-cd4c-4636-8b99-5b53cc46df75
+    m_ActionName: 'Player_1/HorizontalAttack[/DualSenseGamepadHID/leftTrigger]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player_1
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &3568743178507825649
 GameObject:
   m_ObjectHideFlags: 0
