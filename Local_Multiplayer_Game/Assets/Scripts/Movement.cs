@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public Ducking duckingMechanic;
 
 
-    private void Start()
+    private void Start() // happens on the first frame 
     {
         duckingMechanic = GetComponent<Ducking>();
         Debug.Log(duckingMechanic + "script has been foundddd");
