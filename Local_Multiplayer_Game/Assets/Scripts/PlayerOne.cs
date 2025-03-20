@@ -9,6 +9,7 @@ public class PlayerOne : MonoBehaviour
     public float jumpForce = 7f;
     private Vector3 cubeDirection;
     private Rigidbody rb;
+    private Animator anim;
 
     [Header("Shooting Settings")]
     public GameObject projectilePrefab;
@@ -18,6 +19,7 @@ public class PlayerOne : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>(); // Ensure cube has a Rigidbody component
+        anim = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -49,6 +51,7 @@ public class PlayerOne : MonoBehaviour
         if (ctx.performed && Mathf.Abs(rb.linearVelocity.y) < 0.01f) // checks the veleocity of the players rigid body
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); //addn an impulse force updwards so the player can go up if the player is on the ground
+            anim.SetTrigger("Jump"); // this (calling it in the context of the new input system )
         }
     }
 
