@@ -8,6 +8,7 @@ public class PlayerOneScript : MonoBehaviour
     public float jumpForce = 7f;
     private Vector3 cubeDirection;
     private Rigidbody rb;
+    private Animator anim; //this
 
     [Header("Shooting Settings")]
     public GameObject projectilePrefab;
@@ -17,6 +18,7 @@ public class PlayerOneScript : MonoBehaviour
     private void Awake() // Difference between awake and start : awake = as soon as the game starts & start = 1st frame the game starts
     {
         rb = GetComponent<Rigidbody>(); // Ensure cube has a Rigidbody component
+        anim = GetComponent<Animator>(); //"this" is referenced here
     }
 
     public void MovePlayerOne(InputAction.CallbackContext ctx)
@@ -41,6 +43,13 @@ public class PlayerOneScript : MonoBehaviour
         }
     }
 
+    public void JumpPlayerTwo (InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && Mathf.Abs(rb.linearVelocity.y)< 0.01f)
+        {
+            anim.SetTrigger("Rotate");
+        }
+    }
     public void ShootPlayerOne(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
