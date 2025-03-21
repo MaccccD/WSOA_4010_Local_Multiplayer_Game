@@ -508,7 +508,7 @@ MonoBehaviour:
     m_ActionId: 63ebf42c-cd4c-4636-8b99-5b53cc46df75
     m_ActionName: 'Player_1/HorizontalAttack[/DualSenseGamepadHID/leftTrigger]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player_1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

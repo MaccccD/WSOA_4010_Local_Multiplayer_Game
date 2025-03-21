@@ -2,8 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
+    //Eden: Removed the line below because it cuased the one controller to control both players
+    //public InputActionAsset inputActions;
 
-    public InputActionAsset inputActions;
+    private PlayerInput playerInput; //Eden: i added this line in place of the above line to ensure the playerinput can be used seperately by each player
+
     public float moveSpeed = 5f;
 
     private InputAction moveAction;
@@ -16,7 +19,10 @@ public class Movement : MonoBehaviour
     public Jump jumpingMechanic;
     public HorizontalAttack attackMechanic;
 
-
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     private void Start()
     {
@@ -29,8 +35,9 @@ public class Movement : MonoBehaviour
     private void OnEnable()
     {
         // Find the action map and move action
-        var actionMap = inputActions.FindActionMap("Player_1");
-        
+        //var actionMap = inputActions.FindActionMap("Player_1");
+        var actionMap = playerInput.actions; //Eden: changed the above line to this so that each player has own inputs
+
         moveAction = actionMap.FindAction("Move");
         jumpAction = actionMap.FindAction("Jump");
         duckAction = actionMap.FindAction("Duck");
