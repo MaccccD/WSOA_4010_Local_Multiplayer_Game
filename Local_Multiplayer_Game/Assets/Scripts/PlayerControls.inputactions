@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HorizontalAttack",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "63ebf42c-cd4c-4636-8b99-5b53cc46df75",
                     "expectedControlType": "",
@@ -68,7 +68,7 @@
                 {
                     "name": "",
                     "id": "d95ceef1-c3c6-4382-8ab1-3ee88695062e",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -79,11 +79,11 @@
                 {
                     "name": "",
                     "id": "62ca019c-e3bb-4876-a154-4aa8a6bc6a7d",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HorizontalAttack",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

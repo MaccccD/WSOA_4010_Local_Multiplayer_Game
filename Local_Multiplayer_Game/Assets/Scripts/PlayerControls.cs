@@ -119,7 +119,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HorizontalAttack"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""63ebf42c-cd4c-4636-8b99-5b53cc46df75"",
                     ""expectedControlType"": """",
@@ -154,7 +154,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d95ceef1-c3c6-4382-8ab1-3ee88695062e"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -165,11 +165,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""62ca019c-e3bb-4876-a154-4aa8a6bc6a7d"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HorizontalAttack"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -206,7 +206,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_1_Move = m_Player_1.FindAction("Move", throwIfNotFound: true);
         m_Player_1_Jump = m_Player_1.FindAction("Jump", throwIfNotFound: true);
         m_Player_1_Duck = m_Player_1.FindAction("Duck", throwIfNotFound: true);
-        m_Player_1_HorizontalAttack = m_Player_1.FindAction("HorizontalAttack", throwIfNotFound: true);
+        m_Player_1_Attack = m_Player_1.FindAction("Attack", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -290,7 +290,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_1_Move;
     private readonly InputAction m_Player_1_Jump;
     private readonly InputAction m_Player_1_Duck;
-    private readonly InputAction m_Player_1_HorizontalAttack;
+    private readonly InputAction m_Player_1_Attack;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player_1".
     /// </summary>
@@ -315,9 +315,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Duck => m_Wrapper.m_Player_1_Duck;
         /// <summary>
-        /// Provides access to the underlying input action "Player_1/HorizontalAttack".
+        /// Provides access to the underlying input action "Player_1/Attack".
         /// </summary>
-        public InputAction @HorizontalAttack => m_Wrapper.m_Player_1_HorizontalAttack;
+        public InputAction @Attack => m_Wrapper.m_Player_1_Attack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -353,9 +353,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Duck.started += instance.OnDuck;
             @Duck.performed += instance.OnDuck;
             @Duck.canceled += instance.OnDuck;
-            @HorizontalAttack.started += instance.OnHorizontalAttack;
-            @HorizontalAttack.performed += instance.OnHorizontalAttack;
-            @HorizontalAttack.canceled += instance.OnHorizontalAttack;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
         }
 
         /// <summary>
@@ -376,9 +376,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Duck.started -= instance.OnDuck;
             @Duck.performed -= instance.OnDuck;
             @Duck.canceled -= instance.OnDuck;
-            @HorizontalAttack.started -= instance.OnHorizontalAttack;
-            @HorizontalAttack.performed -= instance.OnHorizontalAttack;
-            @HorizontalAttack.canceled -= instance.OnHorizontalAttack;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
         }
 
         /// <summary>
@@ -467,11 +467,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDuck(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "HorizontalAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHorizontalAttack(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }
