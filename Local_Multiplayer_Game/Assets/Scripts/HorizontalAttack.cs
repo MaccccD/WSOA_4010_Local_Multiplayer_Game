@@ -11,6 +11,7 @@ public class HorizontalAttack : MonoBehaviour
     public bool canAttack = true;
     public float attackTimer = 0f;
     public float cooldownTimer = 0f;
+    
 
     private void Start()
     {

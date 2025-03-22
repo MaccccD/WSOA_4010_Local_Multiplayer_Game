@@ -16,6 +16,9 @@ public class HealthManager : MonoBehaviour
     //Eden: integers to keep track of health values
     private int player1Health = 100;
     private int player2Health = 100;
+    //Dumi: Adding the particle effect here bc it needs to play only after a play has been hit and this is where the hit logic is handled:
+    [Header("Particle Effects")]
+    public GameObject Blood;
 
     //Eden: When Sword is enabled (bcs this script is attached to sword) 
     private void OnEnable()
@@ -36,11 +39,13 @@ public class HealthManager : MonoBehaviour
         if (hitPlayerIndex == 0) //Eden: if p1 was hit
         {
             player1Health -= 10; //Eden: take 10 off p1 health int
+            Instantiate(Blood, transform.position, Quaternion.identity);  // Dumi: so each time a player has been hit, the player takes damage and the we visually communicate that by playing the blood splash effect. I'm instantiating bc the hits will happen multiple times and its easuer t habdle the re-spawn logic using Instantiate.
             player1Health = Mathf.Max(player1Health, 0); //Eden: this prevent negative health
         }
         else if (hitPlayerIndex == 1) //Eden: or if p2 was hit
         {
             player2Health -= 10; //Eden: take 10 off p2 health int
+            Instantiate(Blood, transform.position, Quaternion.identity); // Dumi : same as above 
             player2Health = Mathf.Max(player2Health, 0); //Eden: this prevent negative health
         }
 
