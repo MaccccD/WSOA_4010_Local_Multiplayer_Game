@@ -1209,6 +1209,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 530297015}
   - {fileID: 1056467547}
+  pinkMaterial: {fileID: 2100000, guid: ac5eb17887467fb49ba0308f4b21dc15, type: 2}
 --- !u!1 &1779598343
 GameObject:
   m_ObjectHideFlags: 0
