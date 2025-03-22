@@ -5,7 +5,7 @@ public class SwordCollision : MonoBehaviour
 {
     //Eden: define static event that sends the hit players index (0 for p1, 1 for p2)
     //Eden: HealthManager script is then able to use this info to do things
-    public static event Action<int> OnPlayerHitEvent;
+    public static event Action<int, Vector3> OnPlayerHitEvent; //Eden: added this Vector3 to track pos ofplayer
 
     //Eden: These keep track of which player the sword is attached to 
     private string swordAttachedPlayerName;
@@ -19,7 +19,9 @@ public class SwordCollision : MonoBehaviour
             swordAttachedPlayerName = transform.parent.gameObject.name;
             string[] parts = swordAttachedPlayerName.Split('_');
             if (parts.Length > 1)
+            {
                 int.TryParse(parts[1], out swordAttachedPlayerIndex);
+            }
         }
     }
 
@@ -55,8 +57,11 @@ public class SwordCollision : MonoBehaviour
                         Debug.Log("PLAYER 1 hit");
                     }
 
+                    Vector3 hitPosition = other.bounds.center;
+                    Debug.Log("Hit Position: " + hitPosition);
+
                     //Eden: now we broadcast the hit event so that HealthManager can react
-                    OnPlayerHitEvent?.Invoke(hitPlayerIndex);
+                    OnPlayerHitEvent?.Invoke(hitPlayerIndex, hitPlayer.transform.position);
                 }
             }
         }
