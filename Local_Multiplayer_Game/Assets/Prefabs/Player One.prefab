@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2837302637825213557}
   - component: {fileID: 9027123463650493581}
   - component: {fileID: 5026424909359934579}
+  - component: {fileID: 7779524355684363276}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -102,12 +103,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7779524355684363276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304115384586429960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d4970650e1eeb42bd9ebd1dd84ff00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3271403490816220231
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +538,7 @@ GameObject:
   - component: {fileID: 4222872297600293043}
   m_Layer: 0
   m_Name: Player Top
-  m_TagString: Untagged
+  m_TagString: UpperBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

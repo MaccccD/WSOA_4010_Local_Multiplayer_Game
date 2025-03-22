@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - UpperBody
   layers:
   - Default
   - TransparentFX
