@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using System;
 
 public class HealthManager : MonoBehaviour
 {
@@ -14,8 +15,13 @@ public class HealthManager : MonoBehaviour
 
 
     //Eden: integers to keep track of health values
-    private int player1Health = 100;
-    private int player2Health = 100;
+    public int player1Health = 100;
+    public int player2Health = 100;
+
+    //Eden: the following allows me to access these values in other scripts
+    public int Player1Health { get { return player1Health; } }
+    public int Player2Health { get { return player2Health; } }
+
     //Dumi: Adding the particle effect here bc it needs to play only after a play has been hit and this is where the hit logic is handled:
     [Header("Particle Effects")]
     public GameObject Blood;
