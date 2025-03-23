@@ -1,5 +1,6 @@
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HorizontalAttack : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class HorizontalAttack : MonoBehaviour
     public bool canAttack = true;
     public float attackTimer = 0f;
     public float cooldownTimer = 0f;
-    
+
+    //Sibahle: creating attack animations for both players
+    private Animator player1Attack;
+    private Animator player2Attack;
+
 
     private void Start()
     {
@@ -58,6 +63,22 @@ public class HorizontalAttack : MonoBehaviour
         }
     }
 
+    //Sibahle: Addition of methods to trigger animations using new Input System for player 1 and player 2
+    public void AttackPlayer1(InputAction.CallbackContext context)
+    {
+        if (isAttacking)
+        {
+            player1Attack.SetTrigger("Player1 Attack");
+        }
+    }
+
+    public void AttackPlayer2(InputAction.CallbackContext context)
+    {
+        if (isAttacking)
+        {
+            player2Attack.SetTrigger("Player2 Attack");
+        }
+    }
     private void StopAttack()
     {
         if (secondChild != null)

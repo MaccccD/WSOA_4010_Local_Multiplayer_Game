@@ -15,12 +15,14 @@ public class Jump : MonoBehaviour
 
     private float jumpForce;
 
-    public Animator jumpAnim; //Sibahle: Addition of jump animation
+    //Sibahle: Addition of jump animations for player 1 and 2
+    private Animator player1Jump;
+    private Animator player2Jump;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         jumpForce = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y)* jumpHeight); //Eden: Calculation to make the player jump exactly 3 unitd (jumpHeight)
-        jumpAnim = GetComponent<Animator>();
+        
     }
 
     /*private void Update()
@@ -37,10 +39,26 @@ public class Jump : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z); //Eden: Apply the jump force by changing y velocity
             canJump = false; //Dumi: to prevent double jump here //Eden: I changed this from true to false 
             jumpingSound.Play();
-            jumpAnim.SetTrigger("Player1_Jump");
 
         }
         
+    }
+
+    //Sibahle: Addition of methods to trigger jump animations using new Input System for player 1 and player 2
+    public void JumpPlayer1(InputAction.CallbackContext context)
+    {
+        if (canJump)
+        {
+            player1Jump.SetTrigger("Player1 Jump");
+        }
+    }
+
+    public void JumpPlayer2(InputAction.CallbackContext context)
+    {
+        if (canJump)
+        {
+            player2Jump.SetTrigger("Player2 Jump");
+        }
     }
 
     public void CheckGroundStatus()

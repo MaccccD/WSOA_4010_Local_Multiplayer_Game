@@ -12,6 +12,10 @@ public class Ducking : MonoBehaviour
     private bool isDucking = false;
     private float duckTimer = 0f;
 
+    //Sibahle: creating duck animations for both players
+    private Animator player1Duck;
+    private Animator player2Duck;
+
    // public InputActionReference duckAction; // New Input System
 
 
@@ -72,7 +76,24 @@ public class Ducking : MonoBehaviour
             Invoke("StopDucking", duckDuration); //Eden: automatically StopDucking after the duration
         }
     }
-       
+
+    //Sibahle: Addition of methods to trigger animations using new Input System for player 1 and player 2
+    public void DuckPlayer1(InputAction.CallbackContext context)
+    {
+        if (isDucking)
+        {
+            player1Duck.SetTrigger("Player1 Duck");
+        }
+    }
+
+    public void DuckPlayer2(InputAction.CallbackContext context)
+    {
+        if (isDucking)
+        {
+            player2Duck.SetTrigger("Player2 Duck");
+        }
+    }
+
     private void StopDucking()
     {
         //Eden: now I eactivate the first child after duration to make the ducking stop
