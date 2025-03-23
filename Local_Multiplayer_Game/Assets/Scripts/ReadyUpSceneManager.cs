@@ -12,16 +12,13 @@ public class ReadyUpSceneManager : MonoBehaviour
     public float sceneSwitchDelay = 3f;
 
     [Header("Player 1 UI")]
-    // Default image (for example, "eyes.png") that appears when Player 1 joins.
     public GameObject p1DefaultImage;
-    // Ready image (for example, "eyespink.png") that appears when Player 1 presses square.
     public GameObject p1ReadyImage;
 
     [Header("Player 2 UI")]
     public GameObject p2DefaultImage;
     public GameObject p2ReadyImage;
 
-    // Tracking joined and ready players (using their GameObject names, e.g., "Player_0", "Player_1").
     private HashSet<string> joinedPlayers = new HashSet<string>();
     private HashSet<string> readyPlayers = new HashSet<string>();
     private bool sceneTransitionTriggered = false;
@@ -31,7 +28,6 @@ public class ReadyUpSceneManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            // Optionally: DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -39,10 +35,6 @@ public class ReadyUpSceneManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when a player joins (e.g. by shaking the joystick).
-    /// Activates the default UI image.
-    /// </summary>
     public void PlayerJoined(string playerName)
     {
         Debug.Log($"PlayerJoined called with playerName: {playerName}");
@@ -82,10 +74,6 @@ public class ReadyUpSceneManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when a player presses square (the "ready" action).
-    /// Toggles UI: deactivates default image and activates ready image.
-    /// </summary>
     public void PlayerIsReady(string playerName)
     {
         if (!readyPlayers.Contains(playerName))
@@ -125,6 +113,6 @@ public class ReadyUpSceneManager : MonoBehaviour
     private IEnumerator LoadNextSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("FightScreen"); // Replace with your actual scene name.
+        SceneManager.LoadScene("FightScreen"); 
     }
 }

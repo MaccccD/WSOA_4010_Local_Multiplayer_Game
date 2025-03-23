@@ -6,7 +6,6 @@ public class PlayerIndexManager : MonoBehaviour
 {
     public static PlayerIndexManager instance;
 
-    // Dictionary mapping a device's unique ID to its assigned player index.
     private Dictionary<string, int> deviceToPlayerIndex = new Dictionary<string, int>();
     private int nextPlayerIndex = 0;
 
@@ -24,9 +23,6 @@ public class PlayerIndexManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Assigns a unique index for the given PlayerInput if not already assigned.
-    /// </summary>
     public int AssignPlayerIndex(PlayerInput playerInput)
     {
         if (playerInput.devices.Count == 0)
@@ -35,7 +31,6 @@ public class PlayerIndexManager : MonoBehaviour
             return -1;
         }
 
-        // Use the first device's unique ID as key.
         string key = playerInput.devices[0].deviceId.ToString();
         Debug.Log($"Assigning index for device ID: {key}");
 
@@ -55,9 +50,6 @@ public class PlayerIndexManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Returns the number of players (devices) that have been assigned an index.
-    /// </summary>
     public int GetPlayerCount()
     {
         return deviceToPlayerIndex.Count;
