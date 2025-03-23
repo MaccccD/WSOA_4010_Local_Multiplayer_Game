@@ -19,7 +19,14 @@ public class Jump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         jumpForce = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y)* jumpHeight); //Eden: Calculation to make the player jump exactly 3 unitd (jumpHeight)
+        
+        //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
         jumpingSound = GetComponent<AudioSource>();
+        if (jumpingSound == null)
+        {
+            jumpingSound.gameObject.AddComponent<AudioSource>();
+            Debug.Log(jumpingSound + "has been added successfully(1)");
+        }
     }
 
     /*private void Update()
@@ -35,6 +42,7 @@ public class Jump : MonoBehaviour
             //rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);//Dumi: so adding the jump force to the player so it goes upwards by using the rigid bodies addforce
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z); //Eden: Apply the jump force by changing y velocity
             canJump = false; //Dumi: to prevent double jump here //Eden: I changed this from true to false 
+           
             jumpingSound.Play();
 
         }

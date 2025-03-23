@@ -17,6 +17,11 @@ public class HorizontalAttack : MonoBehaviour
     private void Start()
     {
         attackSound = GetComponent<AudioSource>();
+        if (attackSound == null)
+        {
+            attackSound.gameObject.AddComponent<AudioSource>();
+            Debug.Log(attackSound + "has been added successfully(3)");
+        }
         if (transform.childCount > 1)
         {
             secondChild = transform.GetChild(1);

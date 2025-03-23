@@ -20,8 +20,13 @@ public class Ducking : MonoBehaviour
 
     private void Start()
     {
-        //Dumi: Grab the reference to teh audio source comp:
+        //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
         duckingSound = GetComponent<AudioSource>();
+        if (duckingSound == null)
+        {
+            duckingSound.gameObject.AddComponent<AudioSource>();
+            Debug.Log(duckingSound + "has been added successfully(2)");
+        }
         //Eden: get the first child of the player so that it can be deactivated
         if (transform.childCount > 0)
         {
