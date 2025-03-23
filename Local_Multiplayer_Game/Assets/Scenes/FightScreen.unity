@@ -2782,6 +2782,8 @@ MonoBehaviour:
   player2HealthText: {fileID: 1913743570}
   player2ChildText: {fileID: 845272594}
   player2HealthSlider: {fileID: 354338239}
+  player1Health: 100
+  player2Health: 100
   Blood: {fileID: 5673269774294583075, guid: 31ed351a7d9e5084ebb0767189b027f7, type: 3}
 --- !u!1 &1463586131
 GameObject:

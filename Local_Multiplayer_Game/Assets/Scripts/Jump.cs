@@ -5,21 +5,21 @@ public class Jump : MonoBehaviour
 {
     [Header("Jump Mechanic Details")]
     public float currentmoveSpeed;
-    public AudioSource jumpingSound;
     [SerializeField] private bool canJump = false;
 
     [Header("Jumping Physics")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float groundCheckDistance = 2.1f;
     public float jumpHeight = 6f;
-
     private float jumpForce;
+    [Header("Jumping Audio Feedback")]
+    [SerializeField] private AudioSource jumpingSound;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         jumpForce = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y)* jumpHeight); //Eden: Calculation to make the player jump exactly 3 unitd (jumpHeight)
-      
+        jumpingSound = GetComponent<AudioSource>();
     }
 
     /*private void Update()

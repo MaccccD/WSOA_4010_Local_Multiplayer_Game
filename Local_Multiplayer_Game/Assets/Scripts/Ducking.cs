@@ -6,17 +6,22 @@ public class Ducking : MonoBehaviour
     [Header("Ducking Mechanic Variables")]
     [SerializeField] private bool canDuck = true;
     [SerializeField] private float duckDuration = 0.4f; //Eden: duration of the duck in seconds
-    [SerializeField] private AudioSource duckingSound;
+    
 
     private Transform firstChild; //Eden: made a top half of the player that can be deactivated to look like a duck
     private bool isDucking = false;
     private float duckTimer = 0f;
 
-   // public InputActionReference duckAction; // New Input System
+
+    [Header("Ducking Audio Feedback")]
+    [SerializeField] private AudioSource duckingSound;
+    // public InputActionReference duckAction; // New Input System
 
 
     private void Start()
     {
+        //Dumi: Grab the reference to teh audio source comp:
+        duckingSound = GetComponent<AudioSource>();
         //Eden: get the first child of the player so that it can be deactivated
         if (transform.childCount > 0)
         {

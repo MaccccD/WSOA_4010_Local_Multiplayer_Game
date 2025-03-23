@@ -11,10 +11,12 @@ public class HorizontalAttack : MonoBehaviour
     public bool canAttack = true;
     public float attackTimer = 0f;
     public float cooldownTimer = 0f;
-    
+    [Header(" Attack Audio Feedback")]
+    [SerializeField] private AudioSource attackSound;
 
     private void Start()
     {
+        attackSound = GetComponent<AudioSource>();
         if (transform.childCount > 1)
         {
             secondChild = transform.GetChild(1);
@@ -47,6 +49,7 @@ public class HorizontalAttack : MonoBehaviour
             isAttacking = true;
             canAttack = false;
             cooldownTimer = attackCooldown;
+            attackSound.Play();
 
             if (secondChild != null)
             {
@@ -63,6 +66,7 @@ public class HorizontalAttack : MonoBehaviour
         if (secondChild != null)
         {
             secondChild.gameObject.SetActive(false);
+            attackSound.Pause();
         }
 
         isAttacking = false;
