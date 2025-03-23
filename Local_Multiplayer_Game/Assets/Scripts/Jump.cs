@@ -15,11 +15,12 @@ public class Jump : MonoBehaviour
 
     private float jumpForce;
 
+    public Animator jumpAnim;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         jumpForce = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y)* jumpHeight); //Eden: Calculation to make the player jump exactly 3 unitd (jumpHeight)
-      
+        jumpAnim = GetComponent<Animator>();
     }
 
     /*private void Update()
@@ -27,7 +28,7 @@ public class Jump : MonoBehaviour
         CheckGroundStatus();
         //JumpMech();
     }*/
-    public void JumpMech()
+    public void JumpMech(InputAction.CallbackContext context)
     {
         if (canJump)
         {
@@ -36,6 +37,7 @@ public class Jump : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z); //Eden: Apply the jump force by changing y velocity
             canJump = false; //Dumi: to prevent double jump here //Eden: I changed this from true to false 
             jumpingSound.Play();
+            jumpAnim.SetTrigger("Player1_Jump");
 
         }
         
