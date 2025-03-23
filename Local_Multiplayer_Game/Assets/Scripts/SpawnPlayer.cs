@@ -10,10 +10,19 @@ public class SpawnPlayer : MonoBehaviour
     // No need for an "isJoinScene" flag if we want to both spawn and update UI.
     // (Remove any previous isJoinScene logic.)
 
+    [Header("Audio  Sources Feedback")]
+    [SerializeField] private AudioSource duckSound;
+    [SerializeField] private AudioSource jumpingSound;
+    [SerializeField] private AudioSource attackSound;
+
+
+
+
     private void OnEnable()
     {
         if (PlayerInputManager.instance != null)
         {
+           
             PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
             Debug.Log("SpawnPlayer subscribed to onPlayerJoined.");
         }
@@ -46,13 +55,38 @@ public class SpawnPlayer : MonoBehaviour
         ReadyUpSceneManager.Instance?.PlayerJoined(playerInput.gameObject.name);
 
         // Spawn the player visually by positioning at the corresponding spawn point.
+        //Dumi: The audio sources were getting spawned but they were missing the actual component so i added the compnent of the audio manually ,
+        //that way the audio sources are always assigned.
         if (index < spawnPoints.Length)
         {
             playerInput.transform.position = spawnPoints[index].position;
+
+            duckSound = playerInput.gameObject.GetComponent<AudioSource>();
+            attackSound = playerInput.gameObject.GetComponent<AudioSource>();
+            jumpingSound = playerInput.gameObject.GetComponent<AudioSource>();
+
+            Debug.Log($"DuckSound: {duckSound}, AttackSound: {attackSound}, JumpingSound: {jumpingSound}");
+
+            if (duckSound == null)
+            {
+                duckSound = playerInput.gameObject.AddComponent<AudioSource>();
+                Debug.Log(duckSound + "has been added sucessfully (1)");
+              
+            }
+            if(attackSound == null)
+            {
+                attackSound = playerInput.gameObject.AddComponent<AudioSource>();
+                Debug.Log(attackSound + "has been added successfully(2)");
+            }
+            if(jumpingSound == null)
+            {
+                jumpingSound = playerInput.gameObject.AddComponent<AudioSource>();
+                Debug.Log(jumpingSound + "has been added successfully(3)");
+            }
         }
         else
         {
-            Debug.LogWarning($"No spawn point defined for player {index}.");
+            Debug.LogWarning($"No spawn point defined for player {index}. and no audio srouces have been assigned");
         }
 
         // For Player 2 (index == 1), apply the pink material and adjust children.
