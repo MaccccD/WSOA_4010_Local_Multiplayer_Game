@@ -15,7 +15,7 @@ public class Jump : MonoBehaviour
 
     private float jumpForce;
 
-    public Animator jumpAnim;
+    public Animator jumpAnim; //Sibahle: Addition of jump animation
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
