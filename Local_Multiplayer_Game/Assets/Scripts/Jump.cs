@@ -22,10 +22,16 @@ public class Jump : MonoBehaviour
         
         //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
         jumpingSound = GetComponent<AudioSource>();
+
         if (jumpingSound == null)
         {
-            jumpingSound.gameObject.AddComponent<AudioSource>();
-            Debug.Log(jumpingSound + "has been added successfully(1)");
+            jumpingSound = gameObject.AddComponent<AudioSource>();
+            Debug.Log("Jump  soun has been added dynamically.");
+        }
+
+        if (jumpingSound.clip == null)
+        {
+            Debug.LogError("Jump sound AudioSource has no AudioClip assigned!");
         }
     }
 
@@ -42,8 +48,14 @@ public class Jump : MonoBehaviour
             //rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);//Dumi: so adding the jump force to the player so it goes upwards by using the rigid bodies addforce
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z); //Eden: Apply the jump force by changing y velocity
             canJump = false; //Dumi: to prevent double jump here //Eden: I changed this from true to false 
-           
-            jumpingSound.Play();
+            if(jumpingSound != null && jumpingSound.clip != null)
+            {
+                jumpingSound.Play();
+            }
+            else
+            {
+                Debug.LogError("the jump soound is not there bc there is no clip");
+            }
 
         }
         

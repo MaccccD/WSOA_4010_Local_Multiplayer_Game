@@ -286,10 +286,10 @@ GameObject:
   - component: {fileID: 7617817789129745790}
   - component: {fileID: 5017271416526645310}
   - component: {fileID: 2111279035926332122}
-  - component: {fileID: 6571003641897850254}
   - component: {fileID: 6567937099806884095}
-  - component: {fileID: 6902537256478322134}
+  - component: {fileID: 6571003641897850254}
   - component: {fileID: 1864476809283883323}
+  - component: {fileID: 6902537256478322134}
   - component: {fileID: 5094102394005698292}
   - component: {fileID: 5230773316456430633}
   - component: {fileID: -2549178997881279460}
@@ -394,24 +394,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6571003641897850254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3271403490816220231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247dcdfdc6f1fd240aa459aafe3f7539, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentmoveSpeed: 0.5
-  jumpingSound: {fileID: 6834355284979865446}
-  canJump: 0
-  rb: {fileID: 0}
-  groundCheckDistance: 2.1
-  jumpHeight: 3
 --- !u!114 &6567937099806884095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +409,43 @@ MonoBehaviour:
   canDuck: 1
   duckDuration: 0.4
   duckingSound: {fileID: 4278112687991558262}
+--- !u!114 &6571003641897850254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271403490816220231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247dcdfdc6f1fd240aa459aafe3f7539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentmoveSpeed: 0.5
+  canJump: 0
+  rb: {fileID: 0}
+  groundCheckDistance: 2.1
+  jumpHeight: 3
+  jumpingSound: {fileID: 6834355284979865446}
+--- !u!114 &1864476809283883323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271403490816220231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988674a4f2f24904eba2675710b0c882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDuration: 0.3
+  attackCooldown: 0.9
+  isAttacking: 0
+  canAttack: 1
+  attackTimer: 0
+  cooldownTimer: 0
+  attackSound: {fileID: 4703685789598748573}
 --- !u!54 &6902537256478322134
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -454,25 +473,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 1
---- !u!114 &1864476809283883323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3271403490816220231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988674a4f2f24904eba2675710b0c882, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDuration: 0.3
-  attackCooldown: 0.9
-  isAttacking: 0
-  canAttack: 1
-  attackTimer: 0
-  cooldownTimer: 0
-  attackSound: {fileID: 4703685789598748573}
 --- !u!114 &5094102394005698292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,13 +765,13 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 685bdeb465ec5304393e480214d4fa62, type: 3}
   m_Resource: {fileID: 8300000, guid: 685bdeb465ec5304393e480214d4fa62, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.959
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 166
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

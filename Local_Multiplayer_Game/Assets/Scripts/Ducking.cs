@@ -24,8 +24,13 @@ public class Ducking : MonoBehaviour
         duckingSound = GetComponent<AudioSource>();
         if (duckingSound == null)
         {
-            duckingSound.gameObject.AddComponent<AudioSource>();
-            Debug.Log(duckingSound + "has been added successfully(2)");
+            duckingSound = gameObject.AddComponent<AudioSource>();
+            Debug.Log("Duck sound has been added dynamically.");
+        }
+
+        if (duckingSound.clip == null)
+        {
+            Debug.LogError("Duck sound AudioSource has no AudioClip assigned!");
         }
         //Eden: get the first child of the player so that it can be deactivated
         if (transform.childCount > 0)
@@ -69,7 +74,15 @@ public class Ducking : MonoBehaviour
         {
             isDucking = true;
             canDuck = false;
-            duckingSound.Play();
+            if(duckingSound !=null && duckingSound.clip != null)
+            {
+                duckingSound.Play();
+            }
+            else
+            {
+                Debug.LogError("the duck sound is missing an audi clip");
+            }
+          
 
             //Eden: here I deactivate the first child
             if (firstChild != null)

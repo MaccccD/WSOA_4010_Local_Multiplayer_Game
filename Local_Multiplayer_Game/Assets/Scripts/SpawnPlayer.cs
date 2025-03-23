@@ -61,28 +61,20 @@ public class SpawnPlayer : MonoBehaviour
         {
             playerInput.transform.position = spawnPoints[index].position;
 
-            duckSound = playerInput.gameObject.GetComponent<AudioSource>();
-            attackSound = playerInput.gameObject.GetComponent<AudioSource>();
-            jumpingSound = playerInput.gameObject.GetComponent<AudioSource>();
+            // Retrieve existing AudioSources from the Player prefab as opposed to adding new ones 
+            AudioSource[] audioSources = playerInput.gameObject.GetComponents<AudioSource>();
 
-            Debug.Log($"DuckSound: {duckSound}, AttackSound: {attackSound}, JumpingSound: {jumpingSound}");
+            if (audioSources.Length >= 3)
+            {
+                duckSound = audioSources[0];
+                jumpingSound = audioSources[1];
+                attackSound = audioSources[2];
+            }
+            else
+            {
+                Debug.LogError("Not enough AudioSources found on the Player prefab.");
+            }
 
-            if (duckSound == null)
-            {
-                duckSound = playerInput.gameObject.AddComponent<AudioSource>();
-                Debug.Log(duckSound + "has been added sucessfully (1)");
-              
-            }
-            if(attackSound == null)
-            {
-                attackSound = playerInput.gameObject.AddComponent<AudioSource>();
-                Debug.Log(attackSound + "has been added successfully(2)");
-            }
-            if(jumpingSound == null)
-            {
-                jumpingSound = playerInput.gameObject.AddComponent<AudioSource>();
-                Debug.Log(jumpingSound + "has been added successfully(3)");
-            }
         }
         else
         {
