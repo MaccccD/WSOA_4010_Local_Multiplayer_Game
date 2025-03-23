@@ -4,29 +4,28 @@ using UnityEngine.InputSystem;
 
 public class SpawnPlayer : MonoBehaviour
 {
-    public Transform[] spawnPoints; //Eden: pts where the players will spawn
-    public Material pinkMaterial; //Eden: temporary material for Player 2 until we have animations
+    public Transform[] spawnPoints; 
+    public Material pinkMaterial;  
 
-    private IEnumerator WaitForPlayerInputManager()
-    {
-        while (PlayerInputManager.instance == null)
-        {
-            yield return null;
-        }
+    [Header("Audio  Sources Feedback")]
+    [SerializeField] private AudioSource duckSound;
+    [SerializeField] private AudioSource jumpingSound;
+    [SerializeField] private AudioSource attackSound;
 
-        PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
-    }
+
+
 
     private void OnEnable()
     {
         if (PlayerInputManager.instance != null)
         {
-            PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined; //Eden: listen for new joined players
+           
+            PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
+            Debug.Log("SpawnPlayer subscribed to onPlayerJoined.");
         }
         else
         {
             Debug.LogError("PlayerInputManager instance is missing! Make sure it's added to the scene.");
-
         }
     }
 
@@ -35,6 +34,7 @@ public class SpawnPlayer : MonoBehaviour
         if (PlayerInputManager.instance != null)
         {
             PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoined;
+            Debug.Log("SpawnPlayer unsubscribed from onPlayerJoined.");
         }
     }
 
@@ -42,37 +42,57 @@ public class SpawnPlayer : MonoBehaviour
     {
         int index = playerInput.playerIndex;
 
-        //Eden: this assign a unique name to each player to ensure they are seperately named (idk if this also fixed the controller problem) 
         playerInput.gameObject.name = $"Player_{index}";
-
         Debug.Log($"Player {index} joined as {playerInput.gameObject.name} using {playerInput.devices[0].name}");
 
+        ReadyUpSceneManager.Instance?.PlayerJoined(playerInput.gameObject.name);
+
+        //Dumi: The audio sources were getting spawned but they were missing the actual component so i added the compnent of the audio manually ,
+        //that way the audio sources are always assigned.
         if (index < spawnPoints.Length)
         {
             playerInput.transform.position = spawnPoints[index].position;
+
+            // Retrieve existing AudioSources from the Player prefab as opposed to adding new ones 
+            AudioSource[] audioSources = playerInput.gameObject.GetComponents<AudioSource>();
+
+            if (audioSources.Length >= 3)
+            {
+                duckSound = audioSources[0];
+                jumpingSound = audioSources[1];
+                attackSound = audioSources[2];
+            }
+            else
+            {
+                Debug.LogError("Not enough AudioSources found on the Player prefab.");
+            }
+
+        }
+        else
+        {
+            Debug.LogWarning($"No spawn point defined for player {index}. and no audio srouces have been assigned");
         }
 
-        if (index == 1) //Eden: player 2 index is 1
+        if (index == 1)
         {
             Renderer playerRenderer = playerInput.gameObject.GetComponent<Renderer>();
             if (playerRenderer != null && pinkMaterial != null)
             {
-                playerRenderer.material = new Material(pinkMaterial); //Eden: if there is a p2 and there is a pink material then set material to pink for p2
-                Debug.Log("Applied pink material to Player 2");
+                playerRenderer.material = new Material(pinkMaterial);
+                Debug.Log("Applied pink material to Player 2.");
             }
             else
             {
                 Debug.LogError("Player 2 does not have a Renderer or the pink material is missing.");
             }
 
-            //Eden: Because the player has top part as child I need to change material for the first child
             if (playerInput.transform.childCount > 0)
             {
                 Renderer firstChildRenderer = playerInput.transform.GetChild(0).GetComponent<Renderer>();
                 if (firstChildRenderer != null && pinkMaterial != null)
                 {
                     firstChildRenderer.material = new Material(pinkMaterial);
-                    Debug.Log("Applied pink material to Player 2's first child");
+                    Debug.Log("Applied pink material to Player 2's first child.");
                 }
                 else
                 {
@@ -80,7 +100,6 @@ public class SpawnPlayer : MonoBehaviour
                 }
             }
 
-            //Eden: The sword needs to be flipped around therefore I need to move the second child to -1.5 on the x axis
             if (playerInput.transform.childCount > 1)
             {
                 Transform secondChild = playerInput.transform.GetChild(1);

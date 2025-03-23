@@ -6,21 +6,32 @@ public class Ducking : MonoBehaviour
     [Header("Ducking Mechanic Variables")]
     [SerializeField] private bool canDuck = true;
     [SerializeField] private float duckDuration = 0.4f; //Eden: duration of the duck in seconds
-    [SerializeField] private AudioSource duckingSound;
+    
 
     private Transform firstChild; //Eden: made a top half of the player that can be deactivated to look like a duck
     private bool isDucking = false;
     private float duckTimer = 0f;
 
-    //Sibahle: creating duck animations for both players
-    private Animator player1Duck;
-    private Animator player2Duck;
 
-   // public InputActionReference duckAction; // New Input System
+    [Header("Ducking Audio Feedback")]
+    [SerializeField] private AudioSource duckingSound;
+    // public InputActionReference duckAction; // New Input System
 
 
     private void Start()
     {
+        //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
+        duckingSound = GetComponent<AudioSource>();
+        if (duckingSound == null)
+        {
+            duckingSound = gameObject.AddComponent<AudioSource>();
+            Debug.Log("Duck sound has been added dynamically.");
+        }
+
+        if (duckingSound.clip == null)
+        {
+            Debug.LogError("Duck sound AudioSource has no AudioClip assigned!");
+        }
         //Eden: get the first child of the player so that it can be deactivated
         if (transform.childCount > 0)
         {
@@ -63,7 +74,15 @@ public class Ducking : MonoBehaviour
         {
             isDucking = true;
             canDuck = false;
-            duckingSound.Play();
+            if(duckingSound !=null && duckingSound.clip != null)
+            {
+                duckingSound.Play();
+            }
+            else
+            {
+                Debug.LogError("the duck sound is missing an audi clip");
+            }
+          
 
             //Eden: here I deactivate the first child
             if (firstChild != null)
@@ -76,24 +95,7 @@ public class Ducking : MonoBehaviour
             Invoke("StopDucking", duckDuration); //Eden: automatically StopDucking after the duration
         }
     }
-
-    //Sibahle: Addition of methods to trigger animations using new Input System for player 1 and player 2
-    public void DuckPlayer1(InputAction.CallbackContext context)
-    {
-        if (isDucking)
-        {
-            player1Duck.SetTrigger("Player1 Duck");
-        }
-    }
-
-    public void DuckPlayer2(InputAction.CallbackContext context)
-    {
-        if (isDucking)
-        {
-            player2Duck.SetTrigger("Player2 Duck");
-        }
-    }
-
+       
     private void StopDucking()
     {
         //Eden: now I eactivate the first child after duration to make the ducking stop

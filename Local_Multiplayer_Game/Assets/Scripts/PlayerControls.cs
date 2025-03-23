@@ -126,6 +126,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""a66b1549-1a77-4ac8-a503-1d2d9d0dea1a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3bf24e87-ce99-4091-a8e3-974976a52554"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -207,6 +227,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_1_Jump = m_Player_1.FindAction("Jump", throwIfNotFound: true);
         m_Player_1_Duck = m_Player_1.FindAction("Duck", throwIfNotFound: true);
         m_Player_1_Attack = m_Player_1.FindAction("Attack", throwIfNotFound: true);
+        m_Player_1_Start = m_Player_1.FindAction("Start", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -291,6 +312,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_1_Jump;
     private readonly InputAction m_Player_1_Duck;
     private readonly InputAction m_Player_1_Attack;
+    private readonly InputAction m_Player_1_Start;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player_1".
     /// </summary>
@@ -318,6 +340,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player_1/Attack".
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_Player_1_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "Player_1/Start".
+        /// </summary>
+        public InputAction @Start => m_Wrapper.m_Player_1_Start;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -356,6 +382,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Start.started += instance.OnStart;
+            @Start.performed += instance.OnStart;
+            @Start.canceled += instance.OnStart;
         }
 
         /// <summary>
@@ -379,6 +408,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Start.started -= instance.OnStart;
+            @Start.performed -= instance.OnStart;
+            @Start.canceled -= instance.OnStart;
         }
 
         /// <summary>
@@ -473,5 +505,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Start" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStart(InputAction.CallbackContext context);
     }
 }

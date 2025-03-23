@@ -1,6 +1,5 @@
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class HorizontalAttack : MonoBehaviour
 {
@@ -12,14 +11,23 @@ public class HorizontalAttack : MonoBehaviour
     public bool canAttack = true;
     public float attackTimer = 0f;
     public float cooldownTimer = 0f;
-
-    //Sibahle: creating attack animations for both players
-    private Animator player1Attack;
-    private Animator player2Attack;
-
+    [Header(" Attack Audio Feedback")]
+    [SerializeField] private AudioSource attackSound;
 
     private void Start()
     {
+        //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
+        attackSound = GetComponent<AudioSource>();
+        if (attackSound == null)
+        {
+            attackSound = gameObject.AddComponent<AudioSource>();
+            Debug.Log("attack sound has  added dynamically.");
+        }
+
+        if (attackSound.clip == null)
+        {
+            Debug.LogError("attack sound AudioSource has no AudioClip assigned!");
+        }
         if (transform.childCount > 1)
         {
             secondChild = transform.GetChild(1);
@@ -52,6 +60,14 @@ public class HorizontalAttack : MonoBehaviour
             isAttacking = true;
             canAttack = false;
             cooldownTimer = attackCooldown;
+            if(attackSound != null & attackSound.clip != null)
+            {
+                attackSound.Play();
+            }
+            else
+            {
+                Debug.LogError("there is no attack sound bc the clip is not there");
+            }
 
             if (secondChild != null)
             {
@@ -63,27 +79,12 @@ public class HorizontalAttack : MonoBehaviour
         }
     }
 
-    //Sibahle: Addition of methods to trigger animations using new Input System for player 1 and player 2
-    public void AttackPlayer1(InputAction.CallbackContext context)
-    {
-        if (isAttacking)
-        {
-            player1Attack.SetTrigger("Player1 Attack");
-        }
-    }
-
-    public void AttackPlayer2(InputAction.CallbackContext context)
-    {
-        if (isAttacking)
-        {
-            player2Attack.SetTrigger("Player2 Attack");
-        }
-    }
     private void StopAttack()
     {
         if (secondChild != null)
         {
             secondChild.gameObject.SetActive(false);
+            attackSound.Pause();
         }
 
         isAttacking = false;
