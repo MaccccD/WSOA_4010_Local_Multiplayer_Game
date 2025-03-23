@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 1864476809283883323}
   - component: {fileID: 5094102394005698292}
   - component: {fileID: 5230773316456430633}
+  - component: {fileID: -2549178997881279460}
   m_Layer: 0
   m_Name: Player One
   m_TagString: Untagged
@@ -519,11 +520,39 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 63ebf42c-cd4c-4636-8b99-5b53cc46df75
     m_ActionName: 'Player_1/HorizontalAttack[/DualSenseGamepadHID/leftTrigger]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -2549178997881279460}
+        m_TargetAssemblyTypeName: PlayerReady, Assembly-CSharp
+        m_MethodName: OnReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a66b1549-1a77-4ac8-a503-1d2d9d0dea1a
+    m_ActionName: 'Player_1/Start[/DualSenseGamepadHID/buttonWest,/DualSenseGamepadHID1/buttonWest]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player_1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-2549178997881279460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271403490816220231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81076075ce7cd74191828a1f809e288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3568743178507825649
 GameObject:
   m_ObjectHideFlags: 0
