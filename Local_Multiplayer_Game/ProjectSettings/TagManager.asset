@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Ground
   - UpperBody
-  - AudioManager
   layers:
   - Default
   - TransparentFX

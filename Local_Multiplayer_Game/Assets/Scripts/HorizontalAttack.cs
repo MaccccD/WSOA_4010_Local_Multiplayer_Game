@@ -12,10 +12,22 @@ public class HorizontalAttack : MonoBehaviour
     public float attackTimer = 0f;
     public float cooldownTimer = 0f;
     [Header(" Attack Audio Feedback")]
-    public AudioSource attackSound;
+    [SerializeField] private AudioSource attackSound;
 
     private void Start()
     {
+        //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
+        attackSound = GetComponent<AudioSource>();
+        if (attackSound == null)
+        {
+            attackSound = gameObject.AddComponent<AudioSource>();
+            Debug.Log("attack sound has  added dynamically.");
+        }
+
+        if (attackSound.clip == null)
+        {
+            Debug.LogError("attack sound AudioSource has no AudioClip assigned!");
+        }
         if (transform.childCount > 1)
         {
             secondChild = transform.GetChild(1);
