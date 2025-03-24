@@ -62,7 +62,8 @@ public class Ducking : MonoBehaviour
         {
             isDucking = true;
             canDuck = false;
-            if(duckingSound !=null && duckingSound.clip != null)
+
+            if (duckingSound !=null && duckingSound.clip != null)
             {
                 duckingSound.Play();
             }
