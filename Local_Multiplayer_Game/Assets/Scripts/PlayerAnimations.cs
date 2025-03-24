@@ -6,8 +6,19 @@ public class PlayerAnimations : MonoBehaviour
 {
     //public PlayerInputManager InputManager;
 
+    public Movement movementScript;
+
     public Animator player0Controller;
     public Animator player1Controller;
+
+    public SpriteRenderer player0;
+    public SpriteRenderer player1;
+
+    private bool isJumping;
+    private bool isDucking;
+    private bool isAttacking;
+
+
    
     void Start()
     {
@@ -15,9 +26,23 @@ public class PlayerAnimations : MonoBehaviour
         player1Controller = GetComponent<Animator>();
     }
 
-    
+    public void onJump(InputAction.CallbackContext ctx)
+    {
+       
+    }
+
+    public void onDuck(InputAction.CallbackContext ctx)
+    {
+
+    }
+
+    public void onAttack(InputAction.CallbackContext ctx)
+    {
+
+    }
+
     void Update()
     {
-        
+       
     }
 }
