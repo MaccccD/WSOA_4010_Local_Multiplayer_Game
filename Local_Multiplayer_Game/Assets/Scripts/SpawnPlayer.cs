@@ -59,6 +59,7 @@ public class SpawnPlayer : MonoBehaviour
 
             if (audioManager != null)
             {
+                DontDestroyOnLoad(audioManager);
                 // Find and assign the Duck Audio Source
                 AudioSource duckAudioSource = audioManager.transform.Find("Duck Audio Source")?.GetComponent<AudioSource>();
                 if (duckAudioSource != null)
