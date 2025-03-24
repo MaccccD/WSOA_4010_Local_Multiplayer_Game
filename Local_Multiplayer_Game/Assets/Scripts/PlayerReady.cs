@@ -1,27 +1,40 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
+//Eden: this script is used for players to 'ready up' and go to next screen
 public class PlayerReady : MonoBehaviour
 {
-    // A flag to ensure we only mark this player as ready once.
-    private bool isReady = false;
+    private bool isReady = false; //Eden: declare bool that will track if player has pressed ready (square) in CURRENT SCENE
+    private int lastSceneIndex; //EdeN: this is so we are able to ready up in each scene so keep track of which scene we were in
 
-    /// <summary>
-    /// This callback will be called when the "Duck" (or Ready) action is performed.
-    /// In your Input Action Asset, bind the square (or your designated button) to this action.
-    /// </summary>
-    /// <param name="context">The callback context from the Input System.</param>
-    public void OnReady(InputAction.CallbackContext context)
+    //Eden: awake we record which scene player STARTS IN 
+    private void Awake()
     {
-        // Check if the action was performed (i.e. the button was pressed).
-        if (context.performed && !isReady)
+        lastSceneIndex = SceneManager.GetActiveScene().buildIndex; //Eden: here we get the current build index of current scene and store as lastSceneIndex
+    }
+
+    //Eden: in update we can check if the current scene has changed
+    private void Update()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //Eden: this is the check for current scene called every fram
+        if (currentSceneIndex != lastSceneIndex) //Eden:If its a diff scene then
         {
-            isReady = true;
+            lastSceneIndex = currentSceneIndex; //Eden: update lastSceneIndex value
+            isReady = false; //Eden: because we are in a new scene we can reset the ready bool so players can press ready again in new scene
+            Debug.Log($"{gameObject.name} has been reset to NOT ready for scene '{SceneManager.GetActiveScene().name}'.");
+        }
+    }
+
+    //Eden: This is for new input system 
+    public void OnReady(InputAction.CallbackContext context) 
+    {
+        if (context.performed && !isReady) //Eden: if button pressed and player is !isReady ie they have not readyed up then
+        {
+            isReady = true; //Eden: change the bool to true ie they have pressed button
             Debug.Log($"{gameObject.name} pressed Ready and is now ready!");
 
-            // Report to the central ready-up manager.
-            // Here we assume the central manager (e.g., ReadyUpSceneManager) has a method to mark players as ready.
-            ReadyUpSceneManager.Instance?.PlayerIsReady(gameObject.name);
+            ReadyUpSceneManager.Instance?.PlayerIsReady(gameObject.name); //Eden: this sends stuff to ReadyUpSceneManager so i can toggle diff UI (feedback)
         }
     }
 }

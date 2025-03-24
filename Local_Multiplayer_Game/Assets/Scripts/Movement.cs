@@ -94,8 +94,7 @@ public class Movement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        // jumpingMechanic.JumpMech();
-
+        jumpingMechanic.JumpMech();
     }
 
     public void OnDuck(InputAction.CallbackContext context)

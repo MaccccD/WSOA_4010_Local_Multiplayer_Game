@@ -88,7 +88,5 @@ public class HealthManager : MonoBehaviour
             player2HealthSlider.value = player2Health;
 
         }
-
-        
     }
 }
