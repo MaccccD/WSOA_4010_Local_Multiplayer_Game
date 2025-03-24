@@ -14,7 +14,7 @@ public class Ducking : MonoBehaviour
 
 
     [Header("Ducking Audio Feedback")]
-    [SerializeField] public AudioSource duckingSound;
+    public AudioSource duckingSound;
     // public InputActionReference duckAction; // New Input System
 
 

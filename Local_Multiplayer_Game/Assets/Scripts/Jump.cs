@@ -13,13 +13,15 @@ public class Jump : MonoBehaviour
     public float jumpHeight = 6f;
     private float jumpForce;
     [Header("Jumping Audio Feedback")]
-    [SerializeField] public AudioSource jumpingSound;
+    public AudioSource jumpingSound;
+
+    private Animator jumpAnimation;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         jumpForce = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y)* jumpHeight); //Eden: Calculation to make the player jump exactly 3 unitd (jumpHeight)
-        
+        jumpAnimation = GetComponent<Animator>();
     }
 
     /*private void Update()
@@ -34,6 +36,9 @@ public class Jump : MonoBehaviour
             currentmoveSpeed = 0f;
             //rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);//Dumi: so adding the jump force to the player so it goes upwards by using the rigid bodies addforce
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z); //Eden: Apply the jump force by changing y velocity
+            jumpAnimation.SetTrigger("Player1 Jump");
+            jumpAnimation.SetTrigger("Player2 Jump");
+
             canJump = false; //Dumi: to prevent double jump here //Eden: I changed this from true to false 
             if(jumpingSound != null && jumpingSound.clip != null)
             {
