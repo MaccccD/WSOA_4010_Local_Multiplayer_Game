@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 5094102394005698292}
   - component: {fileID: 5230773316456430633}
   - component: {fileID: -2549178997881279460}
+  - component: {fileID: 5976645436532167203}
   m_Layer: 0
   m_Name: Player One
   m_TagString: Untagged
@@ -439,6 +440,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a66b1549-1a77-4ac8-a503-1d2d9d0dea1a
     m_ActionName: 'Player_1/Start[/DualSenseGamepadHID/buttonWest,/DualSenseGamepadHID1/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 50b60670-9034-41a8-b838-3fae9d15d3a1
+    m_ActionName: 'Player_1/Quit[/DualSenseGamepadHID/buttonNorth,/DualSenseGamepadHID1/buttonNorth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player_1
@@ -454,6 +459,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b81076075ce7cd74191828a1f809e288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5976645436532167203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271403490816220231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ea1f8a9a5f032449e5f7b3c15998a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3568743178507825649
@@ -574,8 +591,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7501706622185124964}
   - component: {fileID: 2554692885139256812}
-  - component: {fileID: 1019807682456175009}
-  - component: {fileID: 4125354006271110151}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -653,39 +668,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1019807682456175009
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8530093028983219961}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4125354006271110151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8530093028983219961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25d6c7838f3671048bd372ab7c9a15e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1Controller: {fileID: 9100000, guid: eab501960924ae446be4d360d30e5043, type: 2}
-  player2Controller: {fileID: 9100000, guid: 663c187558d61864da753839944e95c3, type: 2}

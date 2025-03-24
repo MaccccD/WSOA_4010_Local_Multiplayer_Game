@@ -3184,7 +3184,7 @@ CanvasRenderer:
 --- !u!1 &1584259096
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6

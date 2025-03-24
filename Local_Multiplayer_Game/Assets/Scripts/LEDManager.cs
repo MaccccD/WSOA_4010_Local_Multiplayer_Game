@@ -4,23 +4,22 @@ using UnityEngine.InputSystem.DualShock;
 
 public class LEDManager : MonoBehaviour
 {
-    public static LEDManager instance; // To ensure only one instance exists
+    public static LEDManager instance; 
 
     private void Awake()
     {
-        // Ensure only one instance of this object exists
         if (instance != null)
         {
-            Destroy(gameObject); // Destroy this instance if one already exists
+            Destroy(gameObject);
         }
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
+            DontDestroyOnLoad(gameObject); 
         }
     }
 
-    // Method to change LED colors based on the player's index
+    //Eden: Depending on player index change the colour of the LED on controller
     public void SetLEDColor(int playerIndex)
     {
         if (Gamepad.all.Count > playerIndex)
@@ -31,10 +30,10 @@ public class LEDManager : MonoBehaviour
             {
                 Color ledColor;
 
-                // Use hex color codes for setting LED colors
+                //Eden: Change colour to specific hex code
                 if (playerIndex == 0)
                 {
-                    if (ColorUtility.TryParseHtmlString("#6EC8FA", out ledColor)) // Light blue
+                    if (ColorUtility.TryParseHtmlString("#6EC8FA", out ledColor)) //Eden: Light blue
                     {
                         gamepad.SetLightBarColor(ledColor);
                         Debug.Log("Player 1 LED color set to blue.");
@@ -46,7 +45,7 @@ public class LEDManager : MonoBehaviour
                 }
                 else if (playerIndex == 1)
                 {
-                    if (ColorUtility.TryParseHtmlString("#FF007F", out ledColor)) // Pink FF007F
+                    if (ColorUtility.TryParseHtmlString("#FF007F", out ledColor)) //Eden: Pink FF007F
                     {
                         gamepad.SetLightBarColor(ledColor);
                         Debug.Log("Player 2 LED color set to pink.");
@@ -64,14 +63,14 @@ public class LEDManager : MonoBehaviour
         }
     }
 
-    // Optional method to reset LED colors for all players
+    //Eden: Optional method to reset LED colors for all players, I tried to use this to change dynamically regardless of which controller plugged in first
     public void ResetLEDColors()
     {
         Debug.Log("Resetting LED colors for all players.");
-        // Reset LED colors for all connected controllers
+        //Eden :Reset LED colors for all connected controllers
         for (int i = 0; i < Gamepad.all.Count; i++)
         {
-            SetLEDColor(i);  // Reapply the LED color based on the index
+            SetLEDColor(i);  //Eden: reapply the LED color based on the index
         }
     }
 }

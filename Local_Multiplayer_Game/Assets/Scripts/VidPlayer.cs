@@ -3,23 +3,23 @@ using UnityEngine;
 public class VidPlayer : MonoBehaviour
 {
     [Header("Game Objects for Video Activation")]
-    public GameObject pinkVid; // Player 1's lose video
-    public GameObject blueVid; // Player 2's lose video
+    public GameObject pinkVid; //Eden: Player 2's win video
+    public GameObject blueVid; //Eden: Player 1's win video
 
     private void Start()
     {
-        // Get the loser player from PlayerPrefs
+        //Eden: get the loser player from PlayerPrefs
         int loserPlayerIndex = PlayerPrefs.GetInt("Loser", -1);
 
-        if (loserPlayerIndex == 0) // Player 1 lost
+        if (loserPlayerIndex == 0) //Eden: player 1 lost
         {
             if (pinkVid != null)
-                pinkVid.SetActive(true); // Activate Player 1's lose video
+                pinkVid.SetActive(true); //Eden Ativate Player 2's win video
         }
-        else if (loserPlayerIndex == 1) // Player 2 lost
+        else if (loserPlayerIndex == 1) //Eden: player 2 lost
         {
             if (blueVid != null)
-                blueVid.SetActive(true); // Activate Player 2's lose video
+                blueVid.SetActive(true); //Eden: Activate Player 1's win video
         }
     }
 }
