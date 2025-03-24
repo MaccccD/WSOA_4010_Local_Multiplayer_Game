@@ -16,8 +16,8 @@ public class Jump : MonoBehaviour
     public AudioSource jumpingSound;
 
     //Sibahle: Addition of jump animations for player 1 and 2
-    private Animator animator;
-    private PlayerInput playerInput;
+    private Animator animator;// animator component for both players
+    private PlayerInput playerInput;//this is for the system to know which player is performing which input so that it triggers the particular animation 
 
     private void Start()
     {
@@ -53,33 +53,16 @@ public class Jump : MonoBehaviour
                 Debug.LogError("the jump soound is not there bc there is no clip");
             }
             
-            if (animator == null)
-            {
-                Debug.LogError("Animator is MISSING on " + gameObject.name);
-                return;
-            }
-
-            if (playerInput.playerIndex == 0)
-            {
-                animator.SetTrigger("Player1 Jump");
-                Debug.Log("Player 1 is Jumping");
-            }
-            else if (playerInput.playerIndex == 1)
-            {
-                animator.SetTrigger("Player2 Jump");
-                Debug.Log("Player 2 is Jumping");
-            }
-
         }
         
     }
 
     //Sibahle: Addition of methods to trigger jump animations using new Input System for player 1 and player 2
-    /*public void JumpPlayer1(InputAction.CallbackContext context)
+    public void JumpPlayer1(InputAction.CallbackContext context)
     {
         if (context.performed && canJump)
         {
-            player1Jump.SetTrigger("Player1 Jump");
+            player1Jump.SetTrigger("Player1 Jump"); //Referencing 
             Debug.Log("Player 1 is Jumping");
 
             JumpMech();
@@ -95,7 +78,7 @@ public class Jump : MonoBehaviour
 
             JumpMech();
         }
-    }*/
+    }
 
 
 
