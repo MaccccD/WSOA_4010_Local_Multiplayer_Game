@@ -12,7 +12,7 @@ public class SpawnPlayer : MonoBehaviour
     [SerializeField] private AudioSource jumpingSound;
     [SerializeField] private AudioSource attackSound;
 
-
+    private bool[] playerAssigned = new bool[2];
 
 
     private void OnEnable()
@@ -159,8 +159,14 @@ public class SpawnPlayer : MonoBehaviour
                     secondChild.localPosition = new Vector3(-1.5f, secondChild.localPosition.y, secondChild.localPosition.z);
                 }
             }
-            DontDestroyOnLoad(playerInput.gameObject);
 
+            LEDManager.instance.SetLEDColor(index);
+            Debug.Log($"Player {index + 1} moved the joystick, LED color updated.");
         }
+
+        DontDestroyOnLoad(playerInput.gameObject);
     }
+
+    
 }
+
