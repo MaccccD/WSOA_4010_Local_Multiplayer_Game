@@ -13,26 +13,13 @@ public class Jump : MonoBehaviour
     public float jumpHeight = 6f;
     private float jumpForce;
     [Header("Jumping Audio Feedback")]
-    [SerializeField] private AudioSource jumpingSound;
+    public AudioSource jumpingSound;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         jumpForce = Mathf.Sqrt(2 * Mathf.Abs(Physics.gravity.y)* jumpHeight); //Eden: Calculation to make the player jump exactly 3 unitd (jumpHeight)
-        
-        //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
-        jumpingSound = GetComponent<AudioSource>();
 
-        if (jumpingSound == null)
-        {
-            jumpingSound = gameObject.AddComponent<AudioSource>();
-            Debug.Log("Jump  soun has been added dynamically.");
-        }
-
-        if (jumpingSound.clip == null)
-        {
-            Debug.LogError("Jump sound AudioSource has no AudioClip assigned!");
-        }
     }
 
     /*private void Update()

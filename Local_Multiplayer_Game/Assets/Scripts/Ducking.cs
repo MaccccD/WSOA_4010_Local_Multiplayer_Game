@@ -14,24 +14,14 @@ public class Ducking : MonoBehaviour
 
 
     [Header("Ducking Audio Feedback")]
-    [SerializeField] private AudioSource duckingSound;
+    public AudioSource duckingSound; // Assigned in SpawnPlayer.cs
+
+
     // public InputActionReference duckAction; // New Input System
 
 
     private void Start()
     {
-        //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
-        duckingSound = GetComponent<AudioSource>();
-        if (duckingSound == null)
-        {
-            duckingSound = gameObject.AddComponent<AudioSource>();
-            Debug.Log("Duck sound has been added dynamically.");
-        }
-
-        if (duckingSound.clip == null)
-        {
-            Debug.LogError("Duck sound AudioSource has no AudioClip assigned!");
-        }
         //Eden: get the first child of the player so that it can be deactivated
         if (transform.childCount > 0)
         {
@@ -42,7 +32,7 @@ public class Ducking : MonoBehaviour
             Debug.LogError("No children found for the player");
         }
     }
-
+  
     /*private void Update()
     {
         //Eden: if c is pressed or held down, start or reset the duck timer
@@ -55,9 +45,11 @@ public class Ducking : MonoBehaviour
         }
     }*/
 
-    /*public void Duck()
+/*    public void Duck()
     {
         //handle ducking logic
+        Debug.Log("C key pressed, attempting to duck...");
+
         if (Input.GetKey(KeyCode.C) && canDuck)
         {
             if (!isDucking)
@@ -77,11 +69,13 @@ public class Ducking : MonoBehaviour
             if(duckingSound !=null && duckingSound.clip != null)
             {
                 duckingSound.Play();
+                Debug.Log("ayyyy , it playssss");
             }
             else
             {
-                Debug.LogError("the duck sound is missing an audi clip");
+                Debug.LogError("kubiii");
             }
+           
           
 
             //Eden: here I deactivate the first child
