@@ -106,5 +106,7 @@ public class SpawnPlayer : MonoBehaviour
                 secondChild.localPosition = new Vector3(-1.5f, secondChild.localPosition.y, secondChild.localPosition.z);
             }
         }
+        DontDestroyOnLoad(playerInput.gameObject);
+
     }
 }
