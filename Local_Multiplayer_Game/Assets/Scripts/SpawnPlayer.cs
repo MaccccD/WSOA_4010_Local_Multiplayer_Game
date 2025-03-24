@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class SpawnPlayer : MonoBehaviour
 {
+
+    // line number 1 from Chatgpt (Accessed: 24 March 2024) like for exmaple 
     public Transform[] spawnPoints;
     public Material pinkMaterial;
 
@@ -49,7 +51,7 @@ public class SpawnPlayer : MonoBehaviour
 
         //Dumi: The audio sources were getting spawned but they were missing the actual component so i added the compnent of the audio manually ,
         //that way the audio sources are always assigned.
-        if (index < spawnPoints.Length)
+        if (index < spawnPoints.Length && Input.GetKeyDown(KeyCode.Space))
         {
             playerInput.transform.position = spawnPoints[index].position;
 
