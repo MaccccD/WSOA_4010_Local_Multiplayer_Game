@@ -2853,7 +2853,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 3271403490816220231, guid: 6e08169f5368b3548bdc576a07977f3f, type: 3}
+  m_PlayerPrefab: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -3089,6 +3089,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552211401}
   m_CullTransparentMesh: 1
+--- !u!1 &1584259096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+  m_PrefabInstance: {fileID: 1666745266224104066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1584259102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584259096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988674a4f2f24904eba2675710b0c882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDuration: 0.3
+  attackCooldown: 0.9
+  isAttacking: 0
+  canAttack: 1
+  attackTimer: 0
+  cooldownTimer: 0
+  attackSound: {fileID: 2074446281}
+--- !u!114 &1584259103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584259096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247dcdfdc6f1fd240aa459aafe3f7539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentmoveSpeed: 0
+  canJump: 1
+  rb: {fileID: 0}
+  groundCheckDistance: 2.1
+  jumpHeight: 6
+  jumpingSound: {fileID: 1711173922}
+--- !u!114 &1584259104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584259096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2320577afc6920744a9b16d98480d3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDuck: 1
+  duckDuration: 0.4
+  duckingSound: {fileID: 1964310886}
+--- !u!114 &1584259105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584259096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2f3d9756e55c040a2d6295fd8552fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  duckingMechanic: {fileID: 1584259104}
+  jumpingMechanic: {fileID: 1584259103}
+  attackMechanic: {fileID: 1584259102}
 --- !u!1 &1711173920
 GameObject:
   m_ObjectHideFlags: 0
@@ -4094,16 +4167,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
       propertyPath: m_Name
-      value: Player1_Blue
+      value: Player_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8932343560680352215, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8932343560680352215, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932343560680352215, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932343560680352215, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1584259104}
+    - targetCorrespondingSourceObject: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1584259103}
+    - targetCorrespondingSourceObject: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1584259102}
+    - targetCorrespondingSourceObject: {fileID: 5489760590096847467, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1584259105}
   m_SourcePrefab: {fileID: 100100000, guid: 199ebc9c374c46f42a03a78fbff6c045, type: 3}
 --- !u!1001 &5196523979341298759
 PrefabInstance:
@@ -4115,7 +4216,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1489362862007849970, guid: 88db905ee062a86468bf31ee32ca3b3f, type: 3}
       propertyPath: m_Name
-      value: Player2_Pink
+      value: Player_1
       objectReference: {fileID: 0}
     - target: {fileID: 7854555324427909200, guid: 88db905ee062a86468bf31ee32ca3b3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4171,7 +4272,7 @@ SceneRoots:
   - {fileID: 1779598344}
   - {fileID: 1395126946}
   - {fileID: 1738893027}
-  - {fileID: 5196523979341298759}
   - {fileID: 1666745266224104066}
+  - {fileID: 5196523979341298759}
   - {fileID: 1463586135}
   - {fileID: 1021203677}

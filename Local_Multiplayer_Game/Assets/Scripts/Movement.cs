@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        
     }
 
     private void Start()
@@ -58,6 +59,9 @@ public class Movement : MonoBehaviour
         jumpAction.performed += OnJump;
         duckAction.performed += OnDuck;
         attackAction.performed += OnAttack;
+
+        
+
     }
 
     private void OnDisable()
@@ -90,12 +94,18 @@ public class Movement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-       // jumpingMechanic.JumpMech();
+        // jumpingMechanic.JumpMech();
+
     }
 
     public void OnDuck(InputAction.CallbackContext context)
     {
-        duckingMechanic.StartDucking();
+
+            {
+                duckingMechanic.StartDucking();
+            }
+    
+       
     }
 
     public void OnAttack(InputAction.CallbackContext context)
