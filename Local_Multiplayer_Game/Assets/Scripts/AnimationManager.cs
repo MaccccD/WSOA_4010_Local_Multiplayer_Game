@@ -7,6 +7,9 @@ public class AnimationManager : MonoBehaviour
     public RuntimeAnimatorController player1Controller;
     public RuntimeAnimatorController player2Controller;
 
+    private MeshRenderer cubeMeshRenderer;
+    private SpriteRenderer spriteRenderer;
+
     private Animator animator;
     private int playerIndex;
 
@@ -18,6 +21,20 @@ public class AnimationManager : MonoBehaviour
             Debug.LogError("AnimationManager requires an Animator on the same GameObject.");
             return;
         }
+        //Dumi:
+        // Get references to MeshRenderer (Cube) and SpriteRenderer (Child)
+        cubeMeshRenderer = GetComponent<MeshRenderer>();  // Cube's MeshRenderer
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // Child's SpriteRenderer
+
+        if (cubeMeshRenderer != null)
+        {
+            cubeMeshRenderer.enabled = true; // D: trying not to disable the mesh 
+        }
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true;
+        }
+
 
         //Eden get player index
         string[] parts = transform.root.name.Split('_');
@@ -34,16 +51,25 @@ public class AnimationManager : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        animator.SetBool("isJumping", ctx.performed);
+        if (ctx.performed)
+        {
+            animator.SetTrigger("isJumping");
+        }
     }
 
     public void OnAttack(InputAction.CallbackContext ctx)
     {
-        animator.SetBool("isAttacking", ctx.performed);
+        if (ctx.performed)
+        {
+            animator.SetTrigger("isAttacking");
+        }
     }
 
     public void OnDuck(InputAction.CallbackContext ctx)
     {
-        animator.SetBool("isDucking", ctx.performed);
+        if (ctx.performed)
+        {
+            animator.SetTrigger("isDucking");
+        }
     }
 }
