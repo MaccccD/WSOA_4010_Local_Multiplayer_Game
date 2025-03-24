@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -62,6 +63,17 @@ public class HealthManager : MonoBehaviour
 
         //Eden: update the UI to reflect current health values
         UpdateUI();
+
+        if (player1Health == 0)
+        {
+            PlayerPrefs.SetInt("Loser", 0); 
+            ActivateWinLoseScreen();
+        }
+        else if (player2Health == 0)
+        {
+            PlayerPrefs.SetInt("Loser", 1); 
+            ActivateWinLoseScreen();
+        }
     }
 
     //Eden: updates Ui based on int values
@@ -88,5 +100,10 @@ public class HealthManager : MonoBehaviour
             player2HealthSlider.value = player2Health;
 
         }
+    }
+
+    private void ActivateWinLoseScreen()
+    {
+        SceneManager.LoadScene("WinLoseScreen");
     }
 }
