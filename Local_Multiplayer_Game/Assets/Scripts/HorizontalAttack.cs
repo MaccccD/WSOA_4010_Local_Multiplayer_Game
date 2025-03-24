@@ -1,6 +1,5 @@
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class HorizontalAttack : MonoBehaviour
 {
@@ -15,28 +14,8 @@ public class HorizontalAttack : MonoBehaviour
     [Header(" Attack Audio Feedback")]
     [SerializeField] public AudioSource attackSound;
 
-    //Sibahle: Addition of attack animations for player 1 and 2
-    private Animator player1Attack;
-    private Animator player2Attack;
-
     private void Start()
     {
-        //Sibahle: Referencing the animator component on each of the players to be able to access the attack animation
-        player1Attack = GetComponent<Animator>();
-        player2Attack = GetComponent<Animator>();
-
-        //Dumi: Grab the reference to the audio source comp and add it if the game does not have the source at runtime:
-        attackSound = GetComponent<AudioSource>();
-        if (attackSound == null)
-        {
-            attackSound = gameObject.AddComponent<AudioSource>();
-            Debug.Log("attack sound has  added dynamically.");
-        }
-
-        if (attackSound.clip == null)
-        {
-            Debug.LogError("attack sound AudioSource has no AudioClip assigned!");
-        }
         if (transform.childCount > 1)
         {
             secondChild = transform.GetChild(1);
@@ -88,32 +67,6 @@ public class HorizontalAttack : MonoBehaviour
         }
     }
 
-    //Sibahle: Addition of methods to trigger animations using new Input System for player 1 and player 2
-    public void AttackPlayer1(InputAction.CallbackContext context)
-    {
-        if (isAttacking)
-        {
-            player1Attack.SetTrigger("Player1 Attack");
-            Debug.Log("Player 1 Attack Animation Success");
-        }
-        else if (!isAttacking)
-        {
-            player1Attack.SetTrigger("Idle");
-        }
-    }
-
-    public void AttackPlayer2(InputAction.CallbackContext context)
-    {
-        if (isAttacking)
-        {
-            player2Attack.SetTrigger("Player2 Attack");
-            Debug.Log("Player 2 Attack Animation Success");
-        }
-        else if (!isAttacking)
-        {
-            player2Attack.SetTrigger("Idle2");
-        }
-    }
     private void StopAttack()
     {
         if (secondChild != null)
