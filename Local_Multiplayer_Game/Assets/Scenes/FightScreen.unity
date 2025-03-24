@@ -2067,7 +2067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &698251897
 Transform:
   m_ObjectHideFlags: 0
@@ -2095,11 +2095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb09cf4dd9955846a533abf1e1774a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 530297015}
-  - {fileID: 1056467547}
-  playerPrefab: {fileID: 3271403490816220231, guid: 6e08169f5368b3548bdc576a07977f3f, type: 3}
-  pinkMaterial: {fileID: 2100000, guid: ac5eb17887467fb49ba0308f4b21dc15, type: 2}
 --- !u!114 &698251899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,9 +2107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb09cf4dd9955846a533abf1e1774a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints: []
-  playerPrefab: {fileID: 0}
-  pinkMaterial: {fileID: 0}
 --- !u!1 &738712514
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,7 +3224,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395126945}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
@@ -3276,7 +3268,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395126945}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0caa561f81cff741b4654bb9dd6b23b, type: 3}
   m_Name: 
@@ -3284,7 +3276,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 530297015}
   - {fileID: 1056467547}
-  pinkMaterial: {fileID: 2100000, guid: ac5eb17887467fb49ba0308f4b21dc15, type: 2}
+  pinkMaterial: {fileID: 0}
   duckSound: {fileID: 1527415685}
   jumpingSound: {fileID: 291283801}
   attackSound: {fileID: 124607287}
@@ -4234,6 +4226,5 @@ SceneRoots:
   - {fileID: 1395126946}
   - {fileID: 1738893027}
   - {fileID: 1463586135}
-  - {fileID: 1021203677}
   - {fileID: 698251897}
   - {fileID: 2015245449}
