@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 5230773316456430633}
   - component: {fileID: -2549178997881279460}
   - component: {fileID: -7205142517817961085}
+  - component: {fileID: 6031113682339559476}
   m_Layer: 0
   m_Name: Player One
   m_TagString: Untagged
@@ -390,6 +391,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -7205142517817961085}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f3aa5ec9-6419-4e02-86db-ef98e017508a
     m_ActionName: 'Player_1/Jump[/DualSenseGamepadHID/buttonSouth]'
   - m_PersistentCalls:
@@ -479,6 +492,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6031113682339559476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271403490816220231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30bd0d40eaf505541ae70415fb4cf26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementScript: {fileID: 0}
+  player0Controller: {fileID: 0}
+  player1Controller: {fileID: 0}
 --- !u!1 &3568743178507825649
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +626,7 @@ GameObject:
   - component: {fileID: 7501706622185124964}
   - component: {fileID: 2554692885139256812}
   - component: {fileID: 1019807682456175009}
-  - component: {fileID: 4125354006271110151}
+  - component: {fileID: 6231783762326404634}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -684,9 +712,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8530093028983219961}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eab501960924ae446be4d360d30e5043, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -698,7 +726,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4125354006271110151
+--- !u!114 &6231783762326404634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -707,8 +735,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8530093028983219961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25d6c7838f3671048bd372ab7c9a15e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 30bd0d40eaf505541ae70415fb4cf26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Controller: {fileID: 9100000, guid: eab501960924ae446be4d360d30e5043, type: 2}
-  player2Controller: {fileID: 9100000, guid: 663c187558d61864da753839944e95c3, type: 2}
+  movementScript: {fileID: 0}
+  player0Controller: {fileID: 0}
+  player1Controller: {fileID: 0}

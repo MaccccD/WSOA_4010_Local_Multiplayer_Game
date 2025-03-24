@@ -2231,7 +2231,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 5489760590096847467, guid: 79f64443ceff7d745857620696fb73b4, type: 3}
+  m_PlayerPrefab: {fileID: 3271403490816220231, guid: 6e08169f5368b3548bdc576a07977f3f, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -2428,8 +2428,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bd0d40eaf505541ae70415fb4cf26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player0Controller: {fileID: 314536929}
-  player1Controller: {fileID: 32097660}
+  movementScript: {fileID: 0}
+  player0Controller: {fileID: 0}
+  player1Controller: {fileID: 0}
 --- !u!4 &1007217823
 Transform:
   m_ObjectHideFlags: 0
