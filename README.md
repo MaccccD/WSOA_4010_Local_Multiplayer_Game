@@ -37,5 +37,13 @@ Choose the “Speakers (Realtek(R) Audio) Option:
 Once both of the controllers are connected, you can open the game through the exe file and begin playing. 
 
 
+Created by :
+
+Eden Neave (2546984@students.wits.ac.za).
+
+Sibahle Zwane (2557049@students.wits.ac.za).
+
+Dumisani M. Mofolo (2444372@students.wits.ac.za).
+
 
 
