@@ -16,9 +16,13 @@ To play the game, please follow the following steps:
 First, connect your two controllers via a connection cable to the two USB ports on your laptop.
 
 NB: Please note that the connection needs to be via the USB ports to ensure the LED on the controllers changes. 
+
 You will also need to change your audio source on your laptop to hear the audio feedback of the game. 
+
 In the bottom right-hand corner, go to your settings: 
+
 Choose the “Speakers (Realtek(R) Audio) Option:
+
 Once both of the controllers are connected, you can open the game through the exe file and begin playing. 
 
 To download this game, please follow the following steps:
