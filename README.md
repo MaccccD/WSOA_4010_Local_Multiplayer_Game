@@ -1,6 +1,7 @@
 Game Name: 2D "Fighting" Game.
 
 Game Description:
+
 Our multiplayer fighting game draws inspiration from Night Eyes Interact's "First Cut," reimagined as a competitive controller-based experience. 
 Players engage in intense combat using PlayStation DualSense Controllers, where precise timing and skilful manoeuvring determine victory.
 The game leverages the full capabilities of the DualSense Controller, featuring dynamic LED lighting that responds to gameplay events and immersive 
